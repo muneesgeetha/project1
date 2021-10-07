@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError,map , tap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -16,18 +16,22 @@ export class DataService {
       'Content-Type': 'application/json'
     })
   } 
-
+  onGetData = new EventEmitter();
   constructor(
     private http: HttpClient
   ) {}
     /** GET heroes from the server */
-    getDatas() {
+    getDatas(jsonPath) {
         // return this.http.get<TableDatas[]>('../table/assests/table.json')
         //   .pipe(
         //     tap(_ => this.log('fetched heroes')),
         //     catchError(this.handleError<TableDatas[]>('getTabeleDatas', []))
         //   );
-          return this.http.get('assets/json/table.json');
+        let path='assets/json/'.concat(jsonPath)
+        return this.http.get(path);
+        // return this.http.get(path)
+        // .pipe(map(res =>  this.onGetData.emit(res)));
+       
       }
       getTabeleDatas() {
         // return this.http.get<TableDatas[]>('../table/assests/table.json')

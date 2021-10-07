@@ -60,15 +60,14 @@ export class CommonTableComponent implements OnInit, OnChanges {
   }
 
 itemevent(value,data){
-console.log(value);
-console.log(data);
+// console.log(value);
+// console.log(data);
 }
   ngAfterViewInit() {
   }
 
   setTableData(data: any) {
     this.TableData = data;
-    console.log(this.TableData);
     this.cref.detectChanges();
   }
 

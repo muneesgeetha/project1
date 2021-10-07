@@ -9,25 +9,20 @@ import { DataService } from '../service/data.service';
 
 })
 export class DashboardComponent implements OnInit {
-  headerConfig : any = {heading: 'List',  isHeaderButton: true};
-  tableConfig:any = { 
-    actionItems: [{value:'view', view:'View'},{value:'edit', view:'Edit'}, {value:'delete', view:'Delete'}],
-    headerMapping :[{value:'ID', view:'ID'},{value:'Name', view:'Name'},{value:'Age', view:'Age'}] ,
-   shownColumns: ['id', 'name','age']};
-    JsonData:any;
-  constructor(private router:Router, private activatedRoute:ActivatedRoute,private dataService:DataService) { }
+
+    JsonData: any;
+    id=1;
+  constructor(private router:Router, private activatedRoute:ActivatedRoute,private dataService:DataService) { 
+  }
 
  ngOnInit() {
-   this.headerConfig={heading: 'List',  isHeaderButton: true};
-this.getTabeleDatas();
+       this.dataService.getDatas('1.json').subscribe(data => {
+         if(data){
+           this.JsonData= data;
+           console.log(this.JsonData);
+         }
+     });
  }
- getTabeleDatas() {
-   this.dataService.getTabeleDatas().subscribe(data => {
-     if(data){
-       this.JsonData= data;
-     }
-     
- });
-}
+
   
 }

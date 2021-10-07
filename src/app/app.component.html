@@ -2,12 +2,11 @@
     <h1>I am app component</h1>
     <div class="form-group col-sm-3">
         <label>Select list:</label>
-        <select class="form-control"  (change)="onChange($event.target)" >
-          <option>select</option>
-          <option  [value]=1>1</option>
-          <option  [value]=2>2</option>
+        <select class="form-control" [(ngModel)]="selectedValue" (change)="onChange($event.target)" >
+          <option  [value]=1>Dashboard</option>
+          <option  [value]=2>List</option>
         </select>
       </div>            
       
-    <router-outlet (activate)="onOutletLoaded($event)"></router-outlet>
+    <router-outlet (activate)="onOutletLoaded($event)" ></router-outlet>
 
