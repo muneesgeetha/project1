@@ -1,5 +1,4 @@
 import { Component,OnInit } from '@angular/core';
-import { DayTemplateContext } from '@ng-bootstrap/ng-bootstrap/datepicker/datepicker-day-template-context';
 import { DataService } from '../service/data.service';
 @Component({
   selector: 'app-list',

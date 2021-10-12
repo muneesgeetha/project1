@@ -1,0 +1,41 @@
+<h1>I am a sample Form</h1>
+<form class="login-form col-8 offset-2" [formGroup]="sampleForm" (ngSubmit)="onSubmit()"> 
+    <aamc-ui-extended-field
+    label="Name"
+    fieldFormControl="name">
+    <mat-form-field appearance="outline">
+        <input
+        matInput
+        name="name"
+        formControlName="name"
+        placeholder="Enter the Name"
+        aria-label="name"
+        autocomplete="off"
+        />
+    </mat-form-field>
+    </aamc-ui-extended-field>
+    <div class="form-field-column-2">
+        <aamc-ui-extended-field
+        label="Desigination"
+        fieldFormControl="desigination">
+        <mat-form-field appearance="outline">
+            <mat-select
+            formControlName="desigination"
+            aria-label="Desigination"
+            placeholder="Select Desigination"
+            >
+            <mat-option
+            *ngFor="let option of desiginations"
+            value="option.desiginationCode"
+            >
+        {{option.displayName}}</mat-option>
+
+            </mat-select>
+        </mat-form-field>
+
+        </aamc-ui-extended-field>
+    </div>
+    <button type="submit">submit</button>
+    </form>
+    <!-- [errors]="setupErrorConstants.INST_NAME" -->
+    <!-- [errorStateMatcher]="errorStateMatcher" -->

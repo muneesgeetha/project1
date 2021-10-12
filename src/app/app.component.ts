@@ -24,6 +24,8 @@ export class AppComponent implements OnInit {
       }
       else if(value.value == 2){
         this.router.navigate(['/list'], { relativeTo: this.activatedRoute });
+      }else if(value.value == 3){
+        this.router.navigate(['/sampleform'], { relativeTo: this.activatedRoute });
       }
      }
      onOutletLoaded(component) {

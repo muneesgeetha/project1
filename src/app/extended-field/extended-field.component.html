@@ -1,0 +1,17 @@
+<mat-label *ngIf="label">
+    {{label}}
+    <span *ngIf="requiredMarker" class="requied-marker">*</span>
+    <ng-content select="form-field-helper"></ng-content>
+</mat-label>
+<ng-content></ng-content>
+<div
+
+class="hint-and-error-container" [ngClass]="{
+    'show-error': error$ | async
+}">
+    <span class="hint" *ngIf="hint" [innerHTML]="hint"> </span>
+    <mat-error class="error" aria-live="polite" id="{{  fieldFormControl }}" *ngIf="showError()">{{ error$ | async }}</mat-error>
+    <span class="count" *ngIf="showRemainingCount">{{ maxLimit - count > 0 ? maxLimit -  count : 0 }} Characters left of {{ maxLimit }}</span>
+</div>
+
+<!-- [style.top.px]="uiEditorShowChar && showError() ?  '-4' :''"   -->
